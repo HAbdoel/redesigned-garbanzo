@@ -1,4 +1,5 @@
 using AdvancedCsharp.Models;
+using System.Collections.Immutable;
 using System.Linq;
 
 namespace AdvancedCsharp;
@@ -329,7 +330,8 @@ public static class LinqExercises
     public static IEnumerable<string> GetTop5OnlinePlayerNames(IEnumerable<Player> players)
     {
         //throw new NotImplementedException();
-        var top5OnlinePlayerNames = players.
+        var top5OnlinePlayerNames = players.Where(player => player.IsOnline).OrderByDescending(player => player.Score).Take(5).Select(player => player.Name);
+        return top5OnlinePlayerNames;
     }
 
     /// <summary>
@@ -338,7 +340,8 @@ public static class LinqExercises
     public static int GetTeamOnlineScore(IEnumerable<Player> players, string teamName)
     {
         //throw new NotImplementedException();
-        var teamOnlineScore = players.
+        var teamOnlineScore = players.Where(player => player.IsOnline && player.Team == teamName).Select(player => player.Score).Sum();
+        return teamOnlineScore;
     }
 
     /// <summary>
@@ -347,7 +350,8 @@ public static class LinqExercises
     public static double GetAverageLevelOfTopScorers(IEnumerable<Player> players)
     {
         //throw new NotImplementedException();
-        var averageLevelOfTopScorers = players.
+        var averageLevelOfTopScorers = players.OrderByDescending(player => player.Score).Take(10).Average(player => player.Level);
+        return averageLevelOfTopScorers;
     }
 
     // ============================================================
