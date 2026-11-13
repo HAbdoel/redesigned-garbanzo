@@ -78,7 +78,7 @@ public static class LinqExercises
     public static IEnumerable<string> GetPlayerNames(IEnumerable<Player> players)
     {
         //throw new NotImplementedException();
-        var playerNames = players.OrderByDescending(player => player.Name);
+        var playerNames = players.Select(player => player.Name);
         return playerNames;
     }
 
@@ -87,7 +87,9 @@ public static class LinqExercises
     /// </summary>
     public static IEnumerable<int> GetPlayerScores(IEnumerable<Player> players)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        var playerScores = players.Select(player => player.Score);
+        return playerScores;
     }
 
     /// <summary>
@@ -100,7 +102,9 @@ public static class LinqExercises
     /// </summary>
     public static IEnumerable<string> GetPlayerScoreStrings(IEnumerable<Player> players)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        var playerScoreStrings = players.Select(player =>  $"{player.Name}: {player.Score}");
+        return playerScoreStrings;
     }
 
     // ============================================================
@@ -116,7 +120,9 @@ public static class LinqExercises
     /// </summary>
     public static IEnumerable<Player> GetPlayersSortedByScore(IEnumerable<Player> players)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        //var playersSortedByScore = players.Select();
+       // return playersSortedByScore;
     }
 
     /// <summary>
