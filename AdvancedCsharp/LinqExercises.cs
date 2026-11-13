@@ -157,7 +157,9 @@ public static class LinqExercises
     /// </summary>
     public static Player? GetTopScorer(IEnumerable<Player> players)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        var topScorer = players.OrderByDescending(player => player.Score).FirstOrDefault();
+        return topScorer;
     }
 
     /// <summary>
@@ -167,7 +169,9 @@ public static class LinqExercises
     /// </summary>
     public static Player? GetFirstOnlinePlayer(IEnumerable<Player> players)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        var firstOnlinePlayer = players.FirstOrDefault(player => player.IsOnline);
+        return firstOnlinePlayer;
     }
 
     /// <summary>
@@ -175,7 +179,9 @@ public static class LinqExercises
     /// </summary>
     public static Player? GetLowestScorerWithGames(IEnumerable<Player> players)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        var lowestScorerWithGames = players.OrderBy(player => player.Score).FirstOrDefault();
+        return lowestScorerWithGames;
     }
 
     // ============================================================
