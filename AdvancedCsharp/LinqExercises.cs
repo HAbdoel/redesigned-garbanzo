@@ -47,7 +47,7 @@ public static class LinqExercises
     public static IEnumerable<Player> GetPlayersWithScoreAbove(IEnumerable<Player> players, int minScore)
     {
         //throw new NotImplementedException();
-        var highScores = players.Where(player => player.Score > minScore).OrderByDescending(players => players.Score);
+        var highScores = players.Where(player => player.Score > minScore).OrderByDescending(player => player.Score);
         return highScores;
     }
 
@@ -243,7 +243,9 @@ public static class LinqExercises
     /// </summary>
     public static int CountOnlinePlayers(IEnumerable<Player> players)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        var countOnlinePlayers = players.Count(player => player.IsOnline);
+        return countOnlinePlayers;
     }
 
     /// <summary>
@@ -251,7 +253,9 @@ public static class LinqExercises
     /// </summary>
     public static int GetTotalScore(IEnumerable<Player> players)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        var getTotalScore = players.Sum(player => player.Score);
+        return getTotalScore;
     }
 
     /// <summary>
@@ -261,7 +265,9 @@ public static class LinqExercises
     public static double GetAverageScore(IEnumerable<Player> players)
     {
         // Hint: Use .Average(), .Select() and .DefaultIfEmpty() in the right order
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        var getAverageScore = players.Select(player => player.Score).DefaultIfEmpty().Average();
+        return getAverageScore;
     }
 
     /// <summary>
@@ -270,7 +276,9 @@ public static class LinqExercises
     /// </summary>
     public static int GetHighestScore(IEnumerable<Player> players)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        var getHighestScore = players.DefaultIfEmpty().Max(player => player.Score);
+        return getHighestScore;
     }
 
     // ============================================================
