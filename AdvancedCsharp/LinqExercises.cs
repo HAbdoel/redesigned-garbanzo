@@ -195,7 +195,9 @@ public static class LinqExercises
     /// </summary>
     public static bool HasOnlinePlayers(IEnumerable<Player> players)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        var hasOnlinePlayers = players.Any(player => player.IsOnline);
+        return hasOnlinePlayers;
     }
 
     /// <summary>
@@ -203,7 +205,9 @@ public static class LinqExercises
     /// </summary>
     public static bool HasHighScorer(IEnumerable<Player> players)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        var hasHighScorer = players.Any(player => player.Score > 1000);
+        return hasHighScorer;
     }
 
     /// <summary>
@@ -211,7 +215,9 @@ public static class LinqExercises
     /// </summary>
     public static bool AllPlayersHavePlayedGames(IEnumerable<Player> players)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        var allPlayersHavePlayedGames = players.All(player => player.GamesPlayed >= 1);
+        return allPlayersHavePlayedGames;
     }
 
     /// <summary>
@@ -219,7 +225,9 @@ public static class LinqExercises
     /// </summary>
     public static bool AllOnlinePlayersHavePositiveScore(IEnumerable<Player> players)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        var allOnlinePlayersHavePositiveScore = players.All(player => player.IsOnline || player.Score >= 1);
+        return allOnlinePlayersHavePositiveScore;
     }
 
     // ============================================================
