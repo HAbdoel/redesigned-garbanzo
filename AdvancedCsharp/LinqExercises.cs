@@ -1,4 +1,5 @@
 using AdvancedCsharp.Models;
+using System.Linq;
 
 namespace AdvancedCsharp;
 
@@ -35,7 +36,9 @@ public static class LinqExercises
     /// </summary>
     public static IEnumerable<Player> GetOnlinePlayers(IEnumerable<Player> players)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        var onlinePlayers = players.Where(player => player.IsOnline).OrderBy(player => player.Name);
+        return onlinePlayers;
     }
 
     /// <summary>
@@ -43,7 +46,9 @@ public static class LinqExercises
     /// </summary>
     public static IEnumerable<Player> GetPlayersWithScoreAbove(IEnumerable<Player> players, int minScore)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        var highScores = players.Where(player => player.Score > minScore).OrderByDescending(players => players.Score);
+        return highScores;
     }
 
     /// <summary>
@@ -51,7 +56,9 @@ public static class LinqExercises
     /// </summary>
     public static IEnumerable<Player> GetOnlinePlayersOnTeam(IEnumerable<Player> players, string teamName)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        var onlinePlayersOnTeam = players.Where(player => player.IsOnline && player.Team == teamName).OrderBy(player => player.Name);
+        return onlinePlayersOnTeam;
     }
 
     // ============================================================
@@ -70,7 +77,9 @@ public static class LinqExercises
     /// </summary>
     public static IEnumerable<string> GetPlayerNames(IEnumerable<Player> players)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        var playerNames = players.OrderByDescending(player => player.Name);
+        return playerNames;
     }
 
     /// <summary>
