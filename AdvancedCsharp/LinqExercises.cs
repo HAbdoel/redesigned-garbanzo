@@ -365,7 +365,9 @@ public static class LinqExercises
     /// </summary>
     public static IEnumerable<string> GetAllTeamNames(IEnumerable<Player> players)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        var allTeamNames = players.Select(player => player.Team).Distinct();
+        return allTeamNames;
     }
 
     /// <summary>
@@ -373,7 +375,9 @@ public static class LinqExercises
     /// </summary>
     public static IEnumerable<int> GetAllLevels(IEnumerable<Player> players)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        var allLevels = players.Select(player => player.Level).Distinct().OrderBy(level => level);
+        return allLevels;
     }
 
     /// <summary>
@@ -384,7 +388,9 @@ public static class LinqExercises
     /// </summary>
     public static Dictionary<string, int> GetPlayerCountByTeam(IEnumerable<Player> players)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        var playerCountByTeam = players.GroupBy(player => player.Team).ToDictionary(player => player.Key, player => player.Count());
+        return playerCountByTeam;
     }
 
     /// <summary>
@@ -393,7 +399,9 @@ public static class LinqExercises
     /// </summary>
     public static Dictionary<string, int> GetHighestScoreByTeam(IEnumerable<Player> players)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        var highestScoreByTeam = players.GroupBy(player => player.Team).ToDictionary(player => player.Key, player => player.Max(player => player.Score));
+        return highestScoreByTeam;
     }
 
     // ============================================================
