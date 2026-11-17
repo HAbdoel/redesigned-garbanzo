@@ -38,7 +38,6 @@ public static class LinqExercises
     /// </summary>
     public static IEnumerable<Player> GetOnlinePlayers(IEnumerable<Player> players)
     {
-        //throw new NotImplementedException();
         var onlinePlayers = players.Where(player => player.IsOnline).OrderBy(player => player.Name);
         return onlinePlayers;
     }
@@ -48,7 +47,6 @@ public static class LinqExercises
     /// </summary>
     public static IEnumerable<Player> GetPlayersWithScoreAbove(IEnumerable<Player> players, int minScore)
     {
-        //throw new NotImplementedException();
         var highScores = players.Where(player => player.Score > minScore).OrderByDescending(player => player.Score);
         return highScores;
     }
@@ -58,7 +56,6 @@ public static class LinqExercises
     /// </summary>
     public static IEnumerable<Player> GetOnlinePlayersOnTeam(IEnumerable<Player> players, string teamName)
     {
-        //throw new NotImplementedException();
         var onlinePlayersOnTeam = players.Where(player => player.IsOnline && player.Team == teamName).OrderBy(player => player.Name);
         return onlinePlayersOnTeam;
     }
@@ -79,7 +76,6 @@ public static class LinqExercises
     /// </summary>
     public static IEnumerable<string> GetPlayerNames(IEnumerable<Player> players)
     {
-        //throw new NotImplementedException();
         var playerNames = players.Select(player => player.Name);
         return playerNames;
     }
@@ -89,7 +85,6 @@ public static class LinqExercises
     /// </summary>
     public static IEnumerable<int> GetPlayerScores(IEnumerable<Player> players)
     {
-        //throw new NotImplementedException();
         var playerScores = players.Select(player => player.Score);
         return playerScores;
     }
@@ -104,7 +99,6 @@ public static class LinqExercises
     /// </summary>
     public static IEnumerable<string> GetPlayerScoreStrings(IEnumerable<Player> players)
     {
-        //throw new NotImplementedException();
         var playerScoreStrings = players.Select(player =>  $"{player.Name}: {player.Score}");
         return playerScoreStrings;
     }
@@ -122,7 +116,6 @@ public static class LinqExercises
     /// </summary>
     public static IEnumerable<Player> GetPlayersSortedByScore(IEnumerable<Player> players)
     {
-        //throw new NotImplementedException();
         var playersSortedByScore = players.OrderBy(player => player.Score);
         return playersSortedByScore;
     }
@@ -132,7 +125,6 @@ public static class LinqExercises
     /// </summary>
     public static IEnumerable<Player> GetPlayersSortedByScoreDescending(IEnumerable<Player> players)
     {
-        //throw new NotImplementedException();
         var playersSortedByDescending = players.OrderByDescending(player => player.Score);
         return playersSortedByDescending;
     }
@@ -142,7 +134,6 @@ public static class LinqExercises
     /// </summary>
     public static IEnumerable<Player> GetPlayersSortedByName(IEnumerable<Player> players)
     {
-        //throw new NotImplementedException();
         var playerSortedByName = players.OrderBy(player => player.Name);
         return playerSortedByName;
     }
@@ -159,7 +150,6 @@ public static class LinqExercises
     /// </summary>
     public static Player? GetTopScorer(IEnumerable<Player> players)
     {
-        //throw new NotImplementedException();
         var topScorer = players.OrderByDescending(player => player.Score).FirstOrDefault();
         return topScorer;
     }
@@ -171,7 +161,6 @@ public static class LinqExercises
     /// </summary>
     public static Player? GetFirstOnlinePlayer(IEnumerable<Player> players)
     {
-        //throw new NotImplementedException();
         var firstOnlinePlayer = players.FirstOrDefault(player => player.IsOnline);
         return firstOnlinePlayer;
     }
@@ -181,7 +170,6 @@ public static class LinqExercises
     /// </summary>
     public static Player? GetLowestScorerWithGames(IEnumerable<Player> players)
     {
-        //throw new NotImplementedException();
         var lowestScorerWithGames = players.OrderBy(player => player.Score).FirstOrDefault();
         return lowestScorerWithGames;
     }
@@ -197,7 +185,6 @@ public static class LinqExercises
     /// </summary>
     public static bool HasOnlinePlayers(IEnumerable<Player> players)
     {
-        //throw new NotImplementedException();
         var hasOnlinePlayers = players.Any(player => player.IsOnline);
         return hasOnlinePlayers;
     }
@@ -207,7 +194,6 @@ public static class LinqExercises
     /// </summary>
     public static bool HasHighScorer(IEnumerable<Player> players)
     {
-        //throw new NotImplementedException();
         var hasHighScorer = players.Any(player => player.Score > 1000);
         return hasHighScorer;
     }
@@ -217,7 +203,6 @@ public static class LinqExercises
     /// </summary>
     public static bool AllPlayersHavePlayedGames(IEnumerable<Player> players)
     {
-        //throw new NotImplementedException();
         var allPlayersHavePlayedGames = players.All(player => player.GamesPlayed >= 1);
         return allPlayersHavePlayedGames;
     }
@@ -227,7 +212,6 @@ public static class LinqExercises
     /// </summary>
     public static bool AllOnlinePlayersHavePositiveScore(IEnumerable<Player> players)
     {
-        //throw new NotImplementedException();
         var allOnlinePlayersHavePositiveScore = players.All(player => player.IsOnline || player.Score >= 1);
         return allOnlinePlayersHavePositiveScore;
     }
@@ -245,7 +229,6 @@ public static class LinqExercises
     /// </summary>
     public static int CountOnlinePlayers(IEnumerable<Player> players)
     {
-        //throw new NotImplementedException();
         var countOnlinePlayers = players.Count(player => player.IsOnline);
         return countOnlinePlayers;
     }
@@ -255,7 +238,6 @@ public static class LinqExercises
     /// </summary>
     public static int GetTotalScore(IEnumerable<Player> players)
     {
-        //throw new NotImplementedException();
         var getTotalScore = players.Sum(player => player.Score);
         return getTotalScore;
     }
@@ -267,7 +249,6 @@ public static class LinqExercises
     public static double GetAverageScore(IEnumerable<Player> players)
     {
         // Hint: Use .Average(), .Select() and .DefaultIfEmpty() in the right order
-        //throw new NotImplementedException();
         var getAverageScore = players.Select(player => player.Score).DefaultIfEmpty().Average();
         return getAverageScore;
     }
@@ -278,7 +259,6 @@ public static class LinqExercises
     /// </summary>
     public static int GetHighestScore(IEnumerable<Player> players)
     {
-        //throw new NotImplementedException();
         var getHighestScore = players.Select(player => player.Score).DefaultIfEmpty().Max();
         return getHighestScore;
     }
@@ -294,7 +274,6 @@ public static class LinqExercises
     /// </summary>
     public static IEnumerable<Player> GetTop3Players(IEnumerable<Player> players)
     {
-        //throw new NotImplementedException();
         var top3Players = players.OrderByDescending(player => player.Score).Take(3);
         return top3Players;
     }
@@ -304,7 +283,6 @@ public static class LinqExercises
     /// </summary>
     public static IEnumerable<Player> GetPlayersExceptTop3(IEnumerable<Player> players)
     {
-        //throw new NotImplementedException();
         var playersExceptTop3 = players.OrderByDescending(player => player.Score).Skip(3);
         return playersExceptTop3;
     }
@@ -314,7 +292,6 @@ public static class LinqExercises
     /// </summary>
     public static IEnumerable<Player> GetPlayersRanked4To6(IEnumerable<Player> players)
     {
-        //throw new NotImplementedException();
         var playersRanked4To6 = players.OrderByDescending(player => player.Score).Skip(3).Take(3);
         return playersRanked4To6;
     }
@@ -330,7 +307,6 @@ public static class LinqExercises
     /// </summary>
     public static IEnumerable<string> GetTop5OnlinePlayerNames(IEnumerable<Player> players)
     {
-        //throw new NotImplementedException();
         var top5OnlinePlayerNames = players.Where(player => player.IsOnline).OrderByDescending(player => player.Score).Take(5).Select(player => player.Name);
         return top5OnlinePlayerNames;
     }
@@ -340,7 +316,6 @@ public static class LinqExercises
     /// </summary>
     public static int GetTeamOnlineScore(IEnumerable<Player> players, string teamName)
     {
-        //throw new NotImplementedException();
         var teamOnlineScore = players.Where(player => player.IsOnline && player.Team == teamName).Select(player => player.Score).Sum();
         return teamOnlineScore;
     }
@@ -350,7 +325,6 @@ public static class LinqExercises
     /// </summary>
     public static double GetAverageLevelOfTopScorers(IEnumerable<Player> players)
     {
-        //throw new NotImplementedException();
         var averageLevelOfTopScorers = players.OrderByDescending(player => player.Score).Take(10).Average(player => player.Level);
         return averageLevelOfTopScorers;
     }
@@ -366,7 +340,6 @@ public static class LinqExercises
     /// </summary>
     public static IEnumerable<string> GetAllTeamNames(IEnumerable<Player> players)
     {
-        //throw new NotImplementedException();
         var allTeamNames = players.Select(player => player.Team).Distinct();
         return allTeamNames;
     }
@@ -376,7 +349,6 @@ public static class LinqExercises
     /// </summary>
     public static IEnumerable<int> GetAllLevels(IEnumerable<Player> players)
     {
-        //throw new NotImplementedException();
         var allLevels = players.Select(player => player.Level).Distinct().OrderBy(level => level);
         return allLevels;
     }
@@ -389,7 +361,6 @@ public static class LinqExercises
     /// </summary>
     public static Dictionary<string, int> GetPlayerCountByTeam(IEnumerable<Player> players)
     {
-        //throw new NotImplementedException();
         var playerCountByTeam = players.GroupBy(player => player.Team).ToDictionary(player => player.Key, player => player.Count());
         return playerCountByTeam;
     }
@@ -400,7 +371,6 @@ public static class LinqExercises
     /// </summary>
     public static Dictionary<string, int> GetHighestScoreByTeam(IEnumerable<Player> players)
     {
-        //throw new NotImplementedException();
         var highestScoreByTeam = players.GroupBy(player => player.Team).ToDictionary(player => player.Key, player => player.Max(player => player.Score));
         return highestScoreByTeam;
     }
@@ -420,7 +390,6 @@ public static class LinqExercises
     /// </summary>
     public static List<Player> GetOnlinePlayersAsList(IEnumerable<Player> players)
     {
-        //throw new NotImplementedException();
         var onlinePlayersAsList = players.Where(player => player.IsOnline).ToList();
         return onlinePlayersAsList;
     }
@@ -430,7 +399,6 @@ public static class LinqExercises
     /// </summary>
     public static string[] GetSortedPlayerNamesAsArray(IEnumerable<Player> players)
     {
-        //throw new NotImplementedException();
         var sortedPlayerNameAsArray = players.Select(player => player.Name).OrderBy(name => name).ToArray();
         return sortedPlayerNameAsArray;
     }
@@ -446,7 +414,6 @@ public static class LinqExercises
     /// </summary>
     public static IEnumerable<Player> GetHighScorersSingleEnumeration(IEnumerable<Player> players, int minScore)
     {
-        //throw new NotImplementedException();
         var highScorersSingleEnumeration = players.Where(player => player.Score > minScore).ToList();
         return highScorersSingleEnumeration;
     }
@@ -462,7 +429,8 @@ public static class LinqExercises
     /// </summary>
     public static string? GetTeamWithMostOnlinePlayers(IEnumerable<Player> players)
     {
-        throw new NotImplementedException();
+        var teamWithMostOnlinePlayers = players.Where(player => player.IsOnline).GroupBy(player => player.Team).OrderByDescending(player => player.Count()).FirstOrDefault()?.Key;
+        return teamWithMostOnlinePlayers;
     }
 
     /// <summary>
@@ -470,7 +438,10 @@ public static class LinqExercises
     /// </summary>
     public static IEnumerable<string> GetAboveAveragePlayerNames(IEnumerable<Player> players)
     {
-        throw new NotImplementedException();
+        var averageScore = players.Select(player => player.Score).DefaultIfEmpty().Average();
+
+        var aboveAveragePlayerNames = players.Where(player => player.Score > averageScore).Select(player => player.Name);
+        return aboveAveragePlayerNames;
     }
 
     /// <summary>
@@ -479,6 +450,7 @@ public static class LinqExercises
     /// </summary>
     public static Dictionary<string, string> GetTopScorerPerTeam(IEnumerable<Player> players)
     {
-        throw new NotImplementedException();
+        var topScorerPerTeam = players.GroupBy(player => player.Team).ToDictionary(group => group.Key, group => group.OrderByDescending(player => player.Score).First().Name);
+        return topScorerPerTeam;
     }
 }
