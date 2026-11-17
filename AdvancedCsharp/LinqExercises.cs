@@ -170,7 +170,7 @@ public static class LinqExercises
     /// </summary>
     public static Player? GetLowestScorerWithGames(IEnumerable<Player> players)
     {
-        var lowestScorerWithGames = players.OrderBy(player => player.Score).FirstOrDefault();
+        var lowestScorerWithGames = players.Where(player => player.GamesPlayed >= 1).OrderBy(player => player.Score).FirstOrDefault();
         return lowestScorerWithGames;
     }
 
@@ -212,7 +212,7 @@ public static class LinqExercises
     /// </summary>
     public static bool AllOnlinePlayersHavePositiveScore(IEnumerable<Player> players)
     {
-        var allOnlinePlayersHavePositiveScore = players.All(player => player.IsOnline || player.Score >= 1);
+        var allOnlinePlayersHavePositiveScore = players.Where(player => player.IsOnline).All(player => player.Score > 0);
         return allOnlinePlayersHavePositiveScore;
     }
 
