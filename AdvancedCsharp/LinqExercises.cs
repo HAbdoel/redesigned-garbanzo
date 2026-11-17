@@ -1,6 +1,7 @@
 using AdvancedCsharp.Models;
 using System.Collections.Immutable;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 
 namespace AdvancedCsharp;
 
@@ -419,7 +420,9 @@ public static class LinqExercises
     /// </summary>
     public static List<Player> GetOnlinePlayersAsList(IEnumerable<Player> players)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        var onlinePlayersAsList = players.Where(player => player.IsOnline).ToList();
+        return onlinePlayersAsList;
     }
 
     /// <summary>
@@ -427,7 +430,9 @@ public static class LinqExercises
     /// </summary>
     public static string[] GetSortedPlayerNamesAsArray(IEnumerable<Player> players)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        var sortedPlayerNameAsArray = players.Select(player => player.Name).OrderBy(name => name).ToArray();
+        return sortedPlayerNameAsArray;
     }
 
     /// <summary>
@@ -441,7 +446,9 @@ public static class LinqExercises
     /// </summary>
     public static IEnumerable<Player> GetHighScorersSingleEnumeration(IEnumerable<Player> players, int minScore)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
+        var highScorersSingleEnumeration = players.Where(player => player.Score > minScore).ToList();
+        return highScorersSingleEnumeration;
     }
 
     // ============================================================
