@@ -34,7 +34,7 @@ public static class GenericsExercises
     /// </summary>
     public static T GetLast<T>(T[] items)
     {
-        throw new NotImplementedException();
+        return items[items.Length -1];
     }
 
     /// <summary>
@@ -44,7 +44,9 @@ public static class GenericsExercises
     /// </summary>
     public static void Swap<T>(ref T a, ref T b)
     {
-        throw new NotImplementedException();
+        T c = a; 
+        a = b;
+        b = c;
     }
 
     /// <summary>
@@ -55,7 +57,14 @@ public static class GenericsExercises
     /// </summary>
     public static T[] CreateArray<T>(T item, int count)
     {
-        throw new NotImplementedException();
+        T[] items = new T[count];
+
+        for (int i =0; i < count; i++)
+        {
+            items[i] = item;
+        }
+
+        return items;
     }
 
     /// <summary>
@@ -68,7 +77,15 @@ public static class GenericsExercises
     /// </summary>
     public static int IndexOf<T>(T[] items, T target)
     {
-        throw new NotImplementedException();
+        for (int i = 0; i < items.Length; i++)
+        {
+            if (Equals(items[i], target))
+            {
+                return i;
+            }
+        }
+
+        return -1;
     }
 
     // ============================================================
