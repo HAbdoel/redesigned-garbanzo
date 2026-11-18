@@ -20,7 +20,7 @@ public static class RecordsStructsExercises
     /// </summary>
     public static Point2D ModifyPointCopy(Point2D original, int newX)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 
     /// <summary>
