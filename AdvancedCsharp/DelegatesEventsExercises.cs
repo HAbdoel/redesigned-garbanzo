@@ -118,7 +118,17 @@ public static class DelegatesEventsExercises
     /// </summary>
     public static T[] Filter<T>(T[] items, Func<T, bool> predicate)
     {
-        throw new NotImplementedException();
+        List<T> results = new List<T>();
+
+        foreach (T item in items)
+        {
+            if (predicate(item))
+            {
+                results.Add(item);
+            }
+        }
+
+        return results.ToArray();
     }
 
     /// <summary>
@@ -127,7 +137,10 @@ public static class DelegatesEventsExercises
     /// </summary>
     public static void ForEach<T>(T[] items, Action<T> action)
     {
-        throw new NotImplementedException();
+        foreach(T item in items)
+        {
+            action(item);
+        }
     }
 
     /// <summary>
@@ -135,7 +148,15 @@ public static class DelegatesEventsExercises
     /// </summary>
     public static T? FindFirst<T>(T[] items, Func<T, bool> predicate)
     {
-        throw new NotImplementedException();
+        foreach (T item in items)
+        {
+            if (predicate(item))
+            {
+                return item;
+            }
+        }
+
+        return default;
     }
 
     /// <summary>
@@ -143,7 +164,17 @@ public static class DelegatesEventsExercises
     /// </summary>
     public static int CountWhere<T>(T[] items, Func<T, bool> predicate)
     {
-        throw new NotImplementedException();
+        int count = 0;
+
+        foreach (T item in items)
+        {
+            if (predicate(item))
+            {
+                count++;
+            }
+        }
+        
+        return count;
     }
 }
 
@@ -178,7 +209,8 @@ public class ValuePublisher
         set
         {
             // TODO: Set _value and invoke OnValueChanged with the new value
-            throw new NotImplementedException();
+            _value = value;
+            OnValueChanged?.Invoke(_value);
         }
     }
 }
@@ -199,7 +231,12 @@ public class CountdownTimer
     {
         // TODO: Fire OnTick for each number (from, from-1, ..., 1)
         // TODO: Fire OnComplete at the end
-        throw new NotImplementedException();
+        for (int i = from; i >= 1; i--)
+        {
+            OnTick?.Invoke(i);
+        }
+
+        OnComplete?.Invoke();
     }
 }
 
@@ -217,17 +254,23 @@ public class NotifyingCalculator
 
     public int Add(int a, int b)
     {
-        throw new NotImplementedException();
+        int result = a + b;
+        OnCalculation?.Invoke($"{a} + {b} = {result}");
+        return result;
     }
 
     public int Subtract(int a, int b)
     {
-        throw new NotImplementedException();
+        int result = a - b;
+        OnCalculation?.Invoke($"{a} - {b} = {result}");
+        return result;
     }
 
     public int Multiply(int a, int b)
     {
-        throw new NotImplementedException();
+        int result = a * b;
+        OnCalculation?.Invoke($"{a} * {b} = {result}");
+        return result;
     }
 }
 
@@ -250,12 +293,23 @@ public class EventTracker
         // TODO: Create a handler that increments EventsFired
         // TODO: Subscribe to publisher.OnValueChanged
         // TODO: Store references so we can unsubscribe later
-        throw new NotImplementedException();
+        Unsubscribe();
+
+        _publisher = publisher;
+        _handler = value => EventsFired++;
+
+        _publisher.OnValueChanged += _handler;
     }
 
     public void Unsubscribe()
     {
         // TODO: Unsubscribe from the publisher's event
-        throw new NotImplementedException();
+        if (_publisher != null && _handler != null)
+        {
+            _publisher.OnValueChanged -= _handler;
+        }
+
+        _publisher = null;
+        _handler = null;
     }
 }
