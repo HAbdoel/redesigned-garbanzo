@@ -1,4 +1,5 @@
 using System.Reflection.Metadata.Ecma335;
+using System.Runtime.CompilerServices;
 
 namespace AdvancedCsharp;
 
@@ -123,7 +124,10 @@ public static class GenericsExercises
 
         for (int i = 1; i < items.Length; i++)
         {
-            currentMax = items[i];
+            if (items[i].CompareTo(currentMax) > 0)
+            {
+                currentMax = items[i];   
+            }
         }
 
         return currentMax;
@@ -216,14 +220,12 @@ public static class GenericsExercises
 
         for (int i = 0; i < items.Length; i++)
         {
-            results[i] = transformer(items[ì]);
+            results[i] = transformer(items[i]);
         }
 
         return results;
     }
-
-
-
+}
 // ============================================================
 // PART 4: GENERIC CLASSES
 // A generic class is a blueprint that works with any type.
@@ -250,7 +252,8 @@ public class Pair<TFirst, TSecond>
 
     public Pair(TFirst first, TSecond second)
     {
-        throw new NotImplementedException();
+        First = first;
+        Second = second;
     }
 
     public TFirst First { get; }
@@ -273,23 +276,37 @@ public class SimpleStack<T>
 {
     private readonly List<T> _items = [];
 
-    public int Count => throw new NotImplementedException();
+    public int Count => _items.Count;
 
-    public bool IsEmpty => throw new NotImplementedException();
+    public bool IsEmpty => _items.Count == 0;
 
     public void Push(T item)
     {
-        throw new NotImplementedException();
+        _items.Add(item);
     }
 
     public T Pop()
     {
-        throw new NotImplementedException();
+        if (IsEmpty)
+            {
+                throw new InvalidOperationException("Stack is empty");
+            }
+        
+        int lastIndex = _items.Count - 1;
+        T item = _items[lastIndex];
+        _items.RemoveAt(lastIndex);
+
+        return item;
     }
 
     public T Peek()
     {
-        throw new NotImplementedException();
+        if (IsEmpty)
+            {
+                throw new InvalidOperationException("Stack is empty");
+            }
+
+        return _items[_items.Count - 1];
     }
 }
 
@@ -310,28 +327,33 @@ public class Result<T>
     // TODO: Implement private constructor(s)
     // TODO: Implement IsSuccess, IsFailure, Value, and Error properties
     // TODO: Implement static Ok() and Fail() factory methods
+    private readonly T? _value;
+    private readonly string? _error;
+
 
     private Result(bool isSuccess, T? value, string? error)
     {
-        throw new NotImplementedException();
+        IsSuccess = isSuccess;
+        _value = value;
+        _error = error;
     }
 
     public bool IsSuccess { get; }
     public bool IsFailure => !IsSuccess;
 
     // Value should throw InvalidOperationException if IsFailure
-    public T Value => throw new NotImplementedException();
+    public T Value => IsSuccess ? _value! : throw new InvalidOperationException("Cannot access value on a failed result");
 
     // Error should throw InvalidOperationException if IsSuccess
-    public string Error => throw new NotImplementedException();
+    public string Error => IsFailure ? _error! : throw new InvalidOperationException("Cannot access error on a failed result");
 
     public static Result<T> Ok(T value)
     {
-        throw new NotImplementedException();
+        return new Result<T>(true, value, null);
     }
 
     public static Result<T> Fail(string error)
     {
-        throw new NotImplementedException();
+        return new Result<T>(false, default, error);
     }
 }
