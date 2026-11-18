@@ -74,7 +74,7 @@ public static class DelegatesEventsExercises
     /// </summary>
     public static Action CreateIncrementAction(Counter counter)
     {
-        throw new NotImplementedException();
+        return() => counter.Value++;
     }
 
     /// <summary>
@@ -82,7 +82,7 @@ public static class DelegatesEventsExercises
     /// </summary>
     public static Func<int, int, int> CreateAddFunc()
     {
-        throw new NotImplementedException();
+        return(a, b) => a + b;
     }
 
     /// <summary>
@@ -91,7 +91,7 @@ public static class DelegatesEventsExercises
     /// </summary>
     public static Func<int, bool> CreateIsPositiveFunc()
     {
-        throw new NotImplementedException();
+        return number => number > 0;
     }
 
     /// <summary>
@@ -100,7 +100,11 @@ public static class DelegatesEventsExercises
     /// </summary>
     public static Action CombineActions(Action first, Action second)
     {
-        throw new NotImplementedException();
+        return() =>
+        {
+            first();
+            second();
+        };
     }
 
     // ============================================================
