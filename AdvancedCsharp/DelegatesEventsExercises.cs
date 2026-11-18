@@ -25,7 +25,7 @@ public static class DelegatesEventsExercises
     /// </summary>
     public static void ExecuteAction(Action action)
     {
-        //throw new NotImplementedException();
+        action();
     }
 
     /// <summary>
@@ -34,7 +34,7 @@ public static class DelegatesEventsExercises
     /// </summary>
     public static void ExecuteActionWithValue(Action<int> action, int value)
     {
-        throw new NotImplementedException();
+        action(value);
     }
 
     /// <summary>
@@ -43,7 +43,7 @@ public static class DelegatesEventsExercises
     /// </summary>
     public static int ExecuteFunc(Func<int> func)
     {
-        throw new NotImplementedException();
+        return func();
     }
 
     /// <summary>
@@ -52,7 +52,7 @@ public static class DelegatesEventsExercises
     /// </summary>
     public static TOutput Transform<TInput, TOutput>(TInput input, Func<TInput, TOutput> transformer)
     {
-        throw new NotImplementedException();
+        return transformer(input);
     }
 
     /// <summary>
@@ -61,7 +61,7 @@ public static class DelegatesEventsExercises
     /// </summary>
     public static void ExecuteIfNotNull(Action? action)
     {
-        throw new NotImplementedException();
+        action?.Invoke();
     }
 
     // ============================================================
