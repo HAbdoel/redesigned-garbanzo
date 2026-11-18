@@ -1,3 +1,5 @@
+using System.Reflection.Metadata.Ecma335;
+
 namespace AdvancedCsharp;
 
 /// <summary>
@@ -196,7 +198,7 @@ public static class GenericsExercises
     /// </summary>
     public static KeyValuePair<TKey, TValue> MakePair<TKey, TValue>(TKey key, TValue value)
     {
-        throw new NotImplementedException();
+        return new KeyValuePair<TKey, TValue>(key, value);
     }
 
     /// <summary>
@@ -210,9 +212,17 @@ public static class GenericsExercises
     /// </summary>
     public static TOutput[] Transform<TInput, TOutput>(TInput[] items, Func<TInput, TOutput> transformer)
     {
-        throw new NotImplementedException();
+        TOutput[] results = new TOutput[items.Length];
+
+        for (int i = 0; i < items.Length; i++)
+        {
+            results[i] = transformer(items[ì]);
+        }
+
+        return results;
     }
-}
+
+
 
 // ============================================================
 // PART 4: GENERIC CLASSES
