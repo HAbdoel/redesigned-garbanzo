@@ -112,7 +112,19 @@ public static class GenericsExercises
     /// </summary>
     public static T FindMax<T>(T[] items) where T : IComparable<T>
     {
-        throw new NotImplementedException();
+        if (items.Length == 0)
+        {
+            throw new ArgumentException("No items in array");
+        }
+
+        T currentMax = items[0];
+
+        for (int i = 1; i < items.Length; i++)
+        {
+            currentMax = items[i];
+        }
+
+        return currentMax;
     }
 
     /// <summary>
@@ -120,7 +132,22 @@ public static class GenericsExercises
     /// </summary>
     public static T FindMin<T>(T[] items) where T : IComparable<T>
     {
-        throw new NotImplementedException();
+        if (items.Length == 0)
+        {
+            throw new ArgumentException("No items in array");
+        }
+
+        T currentMin = items[0];
+
+        for (int i = 1; i < items.Length; i++)
+        {
+            if (items[i].CompareTo(currentMin) < 0)
+            {
+                currentMin = items[i];
+            }
+        }
+
+        return currentMin;
     }
 
     /// <summary>
@@ -132,7 +159,14 @@ public static class GenericsExercises
     /// </summary>
     public static bool IsSorted<T>(T[] items) where T : IComparable<T>
     {
-        throw new NotImplementedException();
+        for (int i = 1; i < items.Length; i++)
+        {
+            if (items[i].CompareTo(items[i - 1]) < 0)
+            {
+                return false;    
+            }
+        }
+        return true;
     }
 
     /// <summary>
@@ -143,7 +177,8 @@ public static class GenericsExercises
     /// </summary>
     public static T CreateInstance<T>() where T : new()
     {
-        throw new NotImplementedException();
+        T instance = new T ();
+        return instance;
     }
 
     // ============================================================
