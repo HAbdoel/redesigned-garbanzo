@@ -25,7 +25,7 @@ public static class DelegatesEventsExercises
     /// </summary>
     public static void ExecuteAction(Action action)
     {
-        throw new NotImplementedException();
+        //throw new NotImplementedException();
     }
 
     /// <summary>
