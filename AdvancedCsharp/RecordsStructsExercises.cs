@@ -20,7 +20,9 @@ public static class RecordsStructsExercises
     /// </summary>
     public static Point2D ModifyPointCopy(Point2D original, int newX)
     {
-        //throw new NotImplementedException();
+        Point2D copy = original;
+        copy.X = newX;
+        return copy;
     }
 
     /// <summary>
@@ -30,7 +32,8 @@ public static class RecordsStructsExercises
     /// </summary>
     public static PlayerClass ModifyPlayerScore(PlayerClass player, int newScore)
     {
-        throw new NotImplementedException();
+        player.Score = newScore;
+        return player;
     }
 
     // ============================================================
