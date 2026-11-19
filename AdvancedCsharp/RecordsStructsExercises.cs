@@ -46,7 +46,7 @@ public static class RecordsStructsExercises
     /// </summary>
     public static double DistanceFromOrigin(Point2D point)
     {
-        throw new NotImplementedException();
+        return Math.Sqrt(point.X * point.X + point.Y * point.Y);
     }
 
     /// <summary>
@@ -55,7 +55,7 @@ public static class RecordsStructsExercises
     /// </summary>
     public static Point2D AddPoints(Point2D a, Point2D b)
     {
-        throw new NotImplementedException();
+        return new Point2D(a.X + b.X, a.Y + b.Y);
     }
 
     /// <summary>
@@ -64,7 +64,26 @@ public static class RecordsStructsExercises
     /// </summary>
     public static Point2D FindClosestToOrigin(Point2D[] points)
     {
-        throw new NotImplementedException();
+        if (points.Length == 0)
+        {
+            return default(Point2D);
+        }
+
+        Point2D closest = points[0];
+        double minDistance = DistanceFromOrigin(closest);
+
+        for (int i = 1; i < points.Length; i++)
+        {
+            double distance = DistanceFromOrigin(points[i]);
+
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                closest = points[i];
+            }
+        }
+
+        return closest;
     }
 
     // ============================================================
