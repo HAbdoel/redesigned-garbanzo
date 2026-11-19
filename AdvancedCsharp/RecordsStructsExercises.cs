@@ -1,3 +1,5 @@
+using System.Reflection;
+
 namespace AdvancedCsharp;
 
 /// <summary>
@@ -253,16 +255,17 @@ public struct Temperature
 {
     // TODO: Implement
     public double Celsius { get; }
-    public double Fahrenheit => throw new NotImplementedException();
+    public double Fahrenheit => Celsius * 9.0 / 5.0 + 32.0;
 
     public Temperature(double celsius)
     {
-        throw new NotImplementedException();
+        Celsius = celsius;
     }
 
     public static Temperature FromFahrenheit(double fahrenheit)
     {
-        throw new NotImplementedException();
+        double celsius = (fahrenheit - 32.0) * 5.0 / 9.0;
+        return new Temperature(celsius);
     }
 }
 
@@ -284,12 +287,17 @@ public record Money(decimal Amount, string Currency)
 {
     public Money Add(Money other)
     {
-        throw new NotImplementedException();
+        if (Currency != other.Currency)
+        {
+            throw new InvalidOperationException("Cannor add money with different currencies");
+        }
+
+        return new Money(Amount + other.Amount, Currency);
     }
 
     public override string ToString()
     {
-        throw new NotImplementedException();
+        return $"{Amount.ToString("F2", System.Globalization.CultureInfo.InvariantCulture)} {Currency}";
     }
 }
 
@@ -306,16 +314,17 @@ public record OperationResult
 
     private OperationResult(bool success, string? errorMessage)
     {
-        throw new NotImplementedException();
+        Success = success;
+        ErrorMessage = errorMessage;
     }
 
     public static OperationResult Ok()
     {
-        throw new NotImplementedException();
+        return new OperationResult(true, null);
     }
 
     public static OperationResult Error(string message)
     {
-        throw new NotImplementedException();
+        return new OperationResult(false, message);
     }
 }
