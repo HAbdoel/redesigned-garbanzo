@@ -156,7 +156,7 @@ public static class RecordsStructsExercises
     /// </summary>
     public static int ManhattanDistance(GridPosition a, GridPosition b)
     {
-        throw new NotImplementedException();
+        return Math.Abs(a.X - b.X) +  Math.Abs(a.Y - b.Y);
     }
 
     /// <summary>
@@ -165,7 +165,13 @@ public static class RecordsStructsExercises
     /// </summary>
     public static GridPosition[] GetAdjacentPositions(GridPosition pos)
     {
-        throw new NotImplementedException();
+        return new GridPosition[]
+        {
+            new GridPosition(pos.X, pos.Y + 1),
+            new GridPosition(pos.X, pos.Y - 1),
+            new GridPosition(pos.X - 1, pos.Y),
+            new GridPosition(pos.X + 1, pos.Y)
+        };
     }
 
     /// <summary>
@@ -174,7 +180,10 @@ public static class RecordsStructsExercises
     /// </summary>
     public static bool IsInBounds(GridPosition pos, int width, int height)
     {
-        throw new NotImplementedException();
+        return pos.X >= 0 && 
+               pos.X < width && 
+               pos.Y >= 0 && 
+               pos.Y < height;
     }
 }
 
