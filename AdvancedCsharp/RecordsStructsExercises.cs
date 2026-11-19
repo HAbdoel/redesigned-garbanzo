@@ -96,7 +96,7 @@ public static class RecordsStructsExercises
     /// </summary>
     public static WeaponStats UpgradeWeaponDamage(WeaponStats weapon, int newDamage)
     {
-        throw new NotImplementedException();
+        return weapon with {Damage = newDamage};
     }
 
     /// <summary>
@@ -105,7 +105,7 @@ public static class RecordsStructsExercises
     /// </summary>
     public static bool AreWeaponsEqual(WeaponStats a, WeaponStats b)
     {
-        throw new NotImplementedException();
+        return a == b;
     }
 
     /// <summary>
@@ -114,7 +114,11 @@ public static class RecordsStructsExercises
     /// </summary>
     public static GameItem RenameAndRevalue(GameItem item, string newName, int newValue)
     {
-        throw new NotImplementedException();
+        return item with
+        {
+            Name = newName,
+            Value = newValue
+        };
     }
 
     /// <summary>
@@ -123,7 +127,7 @@ public static class RecordsStructsExercises
     /// </summary>
     public static GameItem? FindMostValuable(GameItem[] items)
     {
-        throw new NotImplementedException();
+        return items.OrderByDescending(item => item.Value).FirstOrDefault();
     }
 
     /// <summary>
@@ -133,7 +137,12 @@ public static class RecordsStructsExercises
     /// </summary>
     public static GameItem[] ApplyDiscount(GameItem[] items, int discountPercent)
     {
-        throw new NotImplementedException();
+        return items
+        .Select(items => items with
+        {
+            Value = (int)(items.Value * (100m - discountPercent) / 100m)
+        })
+        .ToArray();
     }
 
     // ============================================================
